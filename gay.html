@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Игра: Найди и тапни Ы</title>
+    <style>
+        /* Общие стили */
+        body {
+            display: flex;
+            margin: 0;
+            height: 100vh;
+            background-color: #f4f3e9; /* Цвет фона из изображения */
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        /* Левая часть - игровая зона */
+        .game-area {
+            flex: 3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background-color: #f4f3e9;
+            flex-direction: column;
+        }
+
+        /* Кнопка для нажатия */
+        .letter {
+            width: 50vw;
+            height: 50vw;
+            max-width: 300px;
+            max-height: 300px;
+            background-color: #f4f3e9;
+            border: 5px solid #000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        /* Счетчик */
+        .money-counter {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        /* Правая часть - навигация и счетчик */
+        .sidebar {
+            flex: 1;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .counter {
+            font-size: 2rem;
+            margin: 20px 0;
+        }
+
+        .button {
+            padding: 10px 20px;
+            background-color: #f4f3e9;
+            border: 1px solid #000;
+            cursor: pointer;
+            margin-top: 10px;
+            width: 80%;
+            text-align: center;
+            text-decoration: none;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <!-- Левая часть для игры -->
+    <div class="game-area">
+        <div class="money-counter">Баланс: <span id="money">0.00</span> UAH</div>
+        <div class="letter" onclick="tapLetter()">Ы</div>
+    </div>
+
+    <!-- Правая часть для навигации и вывода информации -->
+    <div class="sidebar">
+        <h2>Навигация</h2>
+        <div class="counter">Счет: <span id="score">0</span></div>
+        <a href="javascript:void(0);" class="button" onclick="withdraw()">1) Вывод</a>
+        <a href="javascript:void(0);" class="button" onclick="tapAgain()">2) Тапать</a>
+    </div>
+
+    <script>
+        let score = 0;
+        let money = 0;
+
+        function tapLetter() {
+            score++;
+            money += 0.01;
+            document.getElementById("score").innerText = score;
+            document.getElementById("money").innerText = money.toFixed(2);
+        }
+
+        function withdraw() {
+            // Открываем новую вкладку с сообщением
+            window.open("", "_blank").document.write("<h1>Динаху со своим выводом</h1>");
+        }
+
+        function tapAgain() {
+            // Возвращаемся на экран с буквой Ы, ничего не делаем, просто остаемся
+        }
+    </script>
+</body>
+</html>
